@@ -54,8 +54,8 @@ def process():
         pred_class = classes[torch.argmax(output, dim=1).detach().numpy()[0]]
         pred_prob = probs[torch.argmax(output, dim=1).detach().numpy()[0]]
 
-        msg = f'Pred Class: {pred_class} Prob: {pred_prob}'
-        print(msg)
+        cv2.putText(frame, pred_class + ', ' + str(pred_prob), (50,50), cv2.FONT_HERSHEY_SIMPLEX , 1, 
+                  (0,255,0), 1, cv2.LINE_AA)
           
         # Put to queue
         q.put(frame)
