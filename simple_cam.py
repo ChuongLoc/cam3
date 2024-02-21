@@ -32,6 +32,8 @@ while(True):
         print("Gain = ",cap.get(cv2.CAP_PROP_GAIN))
         print("Hue = ",cap.get(cv2.CAP_PROP_HUE))
         print("Exposure = ",cap.get(cv2.CAP_PROP_EXPOSURE))
+        print("AutoFocus = ",cap.get(cv2.CAP_PROP_AUTOFOCUS))
+        print("Focus = ",cap.get(cv2.CAP_PROP_FOCUS))
         print("******************************")  
   
 # After the loop release the cap object 

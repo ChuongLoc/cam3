@@ -2,6 +2,10 @@
 
 source /home/greystone/miniconda3/bin/activate && conda activate torch20
 
+python3 simple_cam.py
+
+python3 test_cam.py
+
 v4l2-ctl --all
 
 0. CAP_PROP_POS_MSEC Current position of the video file in milliseconds.
@@ -25,5 +29,13 @@ v4l2-ctl --all
 18. CAP_PROP_RECTIFICATION Rectification flag for stereo cameras (note: only supported by DC1394 v 2.x backend currently)
 
 Links:
+https://docs.opencv.org/3.4/d4/d15/group__videoio__flags__base.html#gaeb8dd9c89c10a5c63c139bf7c4f5704d
+https://visionandimaging.com/how-to-access-camera-controls-and-resolution-using-opencv-python/
+https://www.youtube.com/watch?v=jx_Ws_IojyE
+https://github.com/econsystems/opencv/tree/master
+https://www.e-consystems.com/blog/camera/tag/opencv/
+https://pypi.org/project/v4l2py/
+https://github.com/stonecontagion/v4l2-python-example/blob/master/cam.py#L13
+https://docs.opencv.org/3.4/d4/d15/group__videoio__flags__base.html#gaeb8dd9c89c10a5c63c139bf7c4f5704d
 https://visionandimaging.com/how-to-access-camera-controls-and-resolution-using-opencv-python/
 https://www.e-consystems.com/blog/camera/products/working-with-see3cam-usb3-cameras-and-opencv/
