@@ -10,7 +10,12 @@ from multiprocessing import Pool, Queue
 # Init
 q = Queue()
 DIM = 224
-cap = cv2.VideoCapture(0)
+FRAME_WIDTH = 1280 # 1280
+FRAME_HEIGHT = 720 # 720
+PROP_EXPOSURE = 400 # 400
+PROP_AUTOFOCUS = 0 # 0
+PROP_FOCUS = 100 # 100
+cap = cv2.VideoCapture(0, cv2.CAP_V4L2)
 
 with open('models/classes.txt') as f:
     classes = f.readlines()
@@ -32,6 +37,28 @@ print('Testing on device: ', device)
 # Load model
 model = torch.load('models/checkpoint.pt', map_location='cpu')
 model.eval()
+
+# Setting camera
+
+# Get params
+Width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+Height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+Framerate = cap.get(cv2.CAP_PROP_FPS)
+Brightness = cap.get(cv2.CAP_PROP_BRIGHTNESS)
+Contrast = cap.get(cv2.CAP_PROP_CONTRAST)
+Saturation = cap.get(cv2.CAP_PROP_SATURATION)
+Gain = cap.get(cv2.CAP_PROP_GAIN)
+Hue = cap.get(cv2.CAP_PROP_HUE)
+Exposure = cap.get(cv2.CAP_PROP_EXPOSURE)
+AutoFocus = cap.get(cv2.CAP_PROP_AUTOFOCUS)
+Focus = cap.get(cv2.CAP_PROP_FOCUS)
+
+if Width != FRAME_WIDTH:
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, FRAME_WIDTH)
+
+if Height != FRAME_HEIGHT:
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, FRAME_HEIGHT)
+
 
 # Define
 def process():
